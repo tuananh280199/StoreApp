@@ -2,11 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import SkiiImage from './assets/skii.png'
+import CategoryListItem from './components/CategoryListItem';
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <CategoryListItem title="Category Item 1" image={SkiiImage}/>
+      <CategoryListItem title="Category Item 2" image={SkiiImage}/>
+      <CategoryListItem title="Category Item 3" image={SkiiImage}/>
     </View>
   );
 }
@@ -14,8 +18,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems : 'stretch',
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    paddingLeft : 16,
+    paddingRight: 16
   },
 });
