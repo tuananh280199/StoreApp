@@ -9,9 +9,10 @@ import {
 // import SkiiImage from '../assets/skii.png'
 
 export default function CategoryListItem(props){
+    const { category } = props;
     return <View style={styles.container}>
-        <Text style={styles.title}>{props.title}</Text>
-        <Image style={styles.categoryImage} source={props.image}/>
+        <Text style={styles.title}>{category.name}</Text>
+        <Image style={styles.categoryImage} source={category.image}/>
     </View>
 }
 
@@ -19,14 +20,16 @@ const styles = StyleSheet.create({
     container : {
         alignItems : 'center',
         padding : 16,
-        borderRadius: 5,
+        borderRadius: 4,
         backgroundColor : '#FFF',
-        shadowColor: '#30C1DD',
+        shadowColor: '#000',
         shadowOpacity : 0.3,
-        shadowRadius : 10,
+        shadowRadius : 15,
         shadowOffset : {width : 0, height : 0},
-        elevation: 10,
-        marginBottom : 16 
+        elevation: 8,
+        marginBottom: 16,
+        marginLeft: 4,
+        marginRight: 4
     },
     categoryImage : {
         width : 64,

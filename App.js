@@ -1,18 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
 
 import SkiiImage from './assets/skii.png'
 import CategoryListItem from './components/CategoryListItem';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <CategoryListItem title="Category Item 1" image={SkiiImage}/>
-      <CategoryListItem title="Category Item 2" image={SkiiImage}/>
-      <CategoryListItem title="Category Item 3" image={SkiiImage}/>
-    </View>
-  );
+export default class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      categories : [
+        { id: 1, name: "Dụng cụ trượt tuyết", image: `${SkiiImage}`},
+        { id: 2, name: "Quần áo trượt tuyết", image: `${SkiiImage}`},
+        { id: 3, name: "Kính mũ", image: `${SkiiImage}`}
+      ]
+    }
+  };
+
+  render(){
+    const { categories } = this.state;
+    return (
+      <View>
+        {/* <ScrollView style={{ paddingLeft: 16, paddingRight: 16}} >
+          {categories.map(category =>
+            <CategoryListItem 
+              key={category.id}
+              category = {category}/>
+          )}
+        </ScrollView> */}
+        <FlatList 
+          data={categories}
+          renderItem={({item}) => <CategoryListItem category={item}/>}
+          keyExtractor={item => `${item.id}`}
+          style={{ paddingLeft: 16, paddingRight: 16}}
+        />
+      </View>
+    )
+  };
 }
 
 const styles = StyleSheet.create({
